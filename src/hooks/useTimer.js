@@ -1,7 +1,15 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
+import useTimer from './hooks/useTimer';
 
-function useTimer() {
-  // stateful logic for our timer will go here!
+function Timer() {
+  const [isOn, stopwatch, setIsOn] = useTimer();
+
+  return (
+    <React.Fragment>
+      {isOn ? <h1>{stopwatch}</h1> : <h1>Timer Stopped</h1>}
+      <button onClick={() => setIsOn(!isOn)}>Start/Stop</button>
+    </React.Fragment>
+  );
 }
 
-export default useTimer;
+export default Timer;
